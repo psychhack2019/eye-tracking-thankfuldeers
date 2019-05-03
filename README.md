@@ -3,7 +3,7 @@
 
 pupil_data.csv.zip: Contains sample report extracted from Eyelink (R) 1000 at frequency of 20Hz for 48 participants.
 
-Study design:
+**Study design**:</br>
 Participants view face images for 6 blocks and perform a remember-know-new (RKN) recognition task in the last 3 blocks.
 
 Study blocks 1-2 (60 trials in each block): Exposure-I (60 face images presented twice)<br/>
