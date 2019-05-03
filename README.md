@@ -13,6 +13,7 @@ Study block 6 (60 trials): Exposure-II (60 face images that were presented for t
 Test blocks 1-3 (40 trials in each block): Direct Test (60 face images from Exposure-II that were presented twice before and 60 new face images presented once)<br/>
 
 Variables:<br/>
+```
 "recording_session_label": subject number </br>
 "trial_index": trial number (1:420)<br/>
 "right_fix_index": fixation index<br/>
@@ -46,3 +47,4 @@ Variables:<br/>
 "pupil_first": whether the sample index is in the first 1500 ms (1) or the last 1500 ms (0) (out of the 3000ms trial)<br/>
 "pupil_mean_last": mean pupil size for sample indices higher than 1500 ms<br/>
 "pupil_mean_first": mean pupil size for sample indices lower than 1500 ms<br/>
+```
