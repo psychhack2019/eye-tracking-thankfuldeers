@@ -1,5 +1,5 @@
 # PsychHacks2019
-##Dataset available for UofT PsychHacks2019
+## Dataset available for UofT PsychHacks2019
 
 pupil_data.csv.zip: Contains sample report extracted from Eyelink (R) 1000 at frequency of 20Hz for 48 participants.
 
@@ -12,7 +12,7 @@ Study block 6 (60 trials): Exposure-II (60 face images that were presented for t
 
 Test blocks 1-3 (40 trials in each block): Direct Test (60 face images from Exposure-II that were presented twice before and 60 new face images presented once)<br/>
 
-##Variables:<br/>
+## Variables:<br/>
 ```
 "recording_session_label": subject number
 "trial_index": trial number (1:420)
