@@ -65,7 +65,7 @@ pupil.plot <- ggplot(data= graphing.pupil, aes(x=factor(Occurence_num), y= mean_
   geom_point(position=pd, aes(group= recording_session_label), size = 3, shape=1) +
   geom_line(position = pd, aes(group= recording_session_label, colour = slopeCheck), alpha = 0.20, size = 3) + labs(title="Violin Plot of Pupil Size by Occurence") +
   xlab('Occurence Number') + ylab('Pupil size') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
-  labs(colour = "Slope") + theme(legend.position="None")
+  labs(colour = "Slope") #+ theme(legend.position="None")
 
 pupil.plot
 
@@ -87,8 +87,7 @@ fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y
                 geom_violin() + 
   geom_point(position=pd, aes(group= recording_session_label), size = 3, shape=1) +
   geom_line(position = pd, aes(group= recording_session_label, colour = slopeCheck), alpha = 0.20, size = 3) + labs(title="Violin Plot of Number of Fixations by Occurence") +
-  xlab('Occurence Number') + ylab('number of fixations') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-  theme(legend.position="None")
+  xlab('Occurence Number') + ylab('number of fixations') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
                                                        
 fixation.plot
 
