@@ -37,6 +37,10 @@ graphing.fixation <- testdf.fixation %>% group_by(Occurence_num, recording_sessi
                               mean_fixation_num > lead(mean_fixation_num, 1) ~ "reduction", TRUE ~ "increase")) 
 
 
+graphing.both <- testdf.fixation %>% group_by(Occurence_num) %>% summarise(mean_fixation_num = mean(fixation_num), mean_pupil_size = mean(mean_pupil_size), sd_pupil_size = sd(mean_pupil_size))
+graphing.both$sd_pupil_size <- graphing.pupil %>% group_by(Occurence_num) %>% summarise(sd = sd(mean_pupil_size)) %>% pull(sd)
+
+
 pupilAov1 <- aov(mean_pupil_size ~ as.factor(Occurence_num), data=testdf.pupil)
 summary(pupilAov1)
 model.tables(pupilAov1, "means")
@@ -47,6 +51,10 @@ summary(bothAov1)
 
 model.tables(bothAov1)
 
+bothManova <- manova(cbind(mean_pupil_size, fixation_num) ~ Occurence_num, data=testdf.fixation)
+summary(bothManova)
+
+summary.aov(bothManova)
 
 pd <- position_dodge2(0.25)
 #linetype = reducing or increasing
@@ -55,7 +63,6 @@ pupil.plot <- ggplot(data= graphing.pupil, aes(x=factor(Occurence_num), y= mean_
   geom_point(position=pd, aes(group= recording_session_label), size = 3, shape=1) +
   geom_line(position = pd, aes(group= recording_session_label, colour = slopeCheck), alpha = 0.20, size = 3) + 
   xlab('Occurence Number') + ylab('Pupil size') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
-
 pupil.plot
 
 
@@ -75,10 +82,49 @@ pd <- position_dodge2(0.25)
 fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y=mean_fixation_num)) +
                 geom_violin() + 
   geom_point(position=pd, aes(group= recording_session_label), size = 3, shape=1) +
-  geom_line(position = pd, aes(group= recording_session_label), alpha = 0.20, size = 3) + 
+  geom_line(position = pd, aes(group= recording_session_label, colour = slopeCheck), alpha = 0.20, size = 3) + 
   xlab('Occurence Number') + ylab('number of fixations') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 
 fixation.plot
 
 
+
+ggline(my_data, x = "dose", y = "len", color = "supp",
+       add = c("mean_se", "dotplot"),
+       palette = c("#00AFBB", "#E7B800"))
+
+
+
+
+
+#DOUBLE AXIS
+
+p <- ggplot(graphing.both, aes(x = factor(Occurence_num), group = 1)) 
+
+p <- p + geom_line(aes(y = mean_pupil_size, colour = "Pupil Diameter"), size = 2)
+p <- p + geom_point(aes(y = mean_pupil_size, colour = "Pupil Diameter"), shape = 15, size = 4)
+p <- p + geom_errorbar(aes(ymin=mean_pupil_size - sd_pupil_size, ymax = mean_pupil_size + sd_pupil_size), width=.2,
+              position=position_dodge(.5)) 
+
+label.df <- data.frame(Occurence_num = c(1))
+
+p <- p + geom_text(data = label.df, aes(y = 1800), label = "**")
+
+p <- p + geom_line(aes(y = mean_fixation_num*180, colour = "Fixations"), size = 2)
+p <- p + geom_point(aes(y = mean_fixation_num*180, colour = "Fixations"), shape = 16, size = 4)
+p <- p + geom_errorbar(aes(ymin=mean_fixation_num*180 - sd_fixation_num*180, ymax = mean_fixation_num*180 + sd_fixation_num*180), width=.2,
+                   position=position_dodge2(.5)) 
+
+p <- p + scale_y_continuous(sec.axis = sec_axis(~./180, name = "Number of Fixations"))
+
+p <- p + scale_colour_manual(values = c("blue", "red"))
+p <- p + labs(y = "Mean Pupil Size",
+              x = "Occurence Number",
+              colour = "Paramater")
+
+p <- p + theme(legend.position = c(0.8, 0.9)) + theme(panel.grid = element_blank()) 
+
+p
+
+ggsave(p)
 
