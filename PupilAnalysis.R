@@ -56,44 +56,41 @@ summary(bothManova)
 
 summary.aov(bothManova)
 
+
+#GRAPHING THE PUPIL DATA
+
 pd <- position_dodge2(0.25)
-#linetype = reducing or increasing
 pupil.plot <- ggplot(data= graphing.pupil, aes(x=factor(Occurence_num), y= mean_pupil_size, legend=F)) + 
   geom_violin() + 
   geom_point(position=pd, aes(group= recording_session_label), size = 3, shape=1) +
-  geom_line(position = pd, aes(group= recording_session_label, colour = slopeCheck), alpha = 0.20, size = 3) + 
-  xlab('Occurence Number') + ylab('Pupil size') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  geom_line(position = pd, aes(group= recording_session_label, colour = slopeCheck), alpha = 0.20, size = 3) + labs(title="Violin Plot of Pupil Size by Occurence") +
+  xlab('Occurence Number') + ylab('Pupil size') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) + 
+  labs(colour = "Slope") + theme(legend.position="None")
+
 pupil.plot
 
 
-graphing.pupil.mean <- graphing.pupil %>% group_by(Occurence_num) %>% summarise(mean_pupil_size = mean(mean_pupil_size))
-graphing.pupil.sd <- graphing.pupil %>% group_by(Occurence_num) %>% summarise(sd = sd(mean_pupil_size))
+#graphing.pupil.mean <- graphing.pupil %>% group_by(Occurence_num) %>% summarise(mean_pupil_size = mean(mean_pupil_size))
+#graphing.pupil.sd <- graphing.pupil %>% group_by(Occurence_num) %>% summarise(sd = sd(mean_pupil_size))
 
-graphing.pupil.mean$sd <- graphing.pupil.sd$sd
+#graphing.pupil.mean$sd <- graphing.pupil.sd$sd
 
 
-pupil.plot.mean <- ggplot(data= graphing.pupil.mean, aes(numeric(mean_pupil_size))) + 
-  geom_bar() 
+#pupil.plot.mean <- ggplot(data= graphing.pupil.mean, aes(numeric(mean_pupil_size))) + 
+#  geom_bar() 
   
-pupil.plot.mean
+#pupil.plot.mean 
 
-
+#GRAPHING THE FIXATION DATA
 pd <- position_dodge2(0.25)
 fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y=mean_fixation_num)) +
                 geom_violin() + 
   geom_point(position=pd, aes(group= recording_session_label), size = 3, shape=1) +
-  geom_line(position = pd, aes(group= recording_session_label, colour = slopeCheck), alpha = 0.20, size = 3) + 
-  xlab('Occurence Number') + ylab('number of fixations') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
-
+  geom_line(position = pd, aes(group= recording_session_label, colour = slopeCheck), alpha = 0.20, size = 3) + labs(title="Violin Plot of Number of Fixations by Occurence") +
+  xlab('Occurence Number') + ylab('number of fixations') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  theme(legend.position="None")
+                                                       
 fixation.plot
-
-
-
-ggline(my_data, x = "dose", y = "len", color = "supp",
-       add = c("mean_se", "dotplot"),
-       palette = c("#00AFBB", "#E7B800"))
-
-
 
 
 
@@ -124,7 +121,6 @@ p <- p + labs(y = "Mean Pupil Size",
 
 p <- p + theme(legend.position = c(0.8, 0.9)) + theme(panel.grid = element_blank()) 
 
-p
+p 
 
-ggsave(p)
-
+ggsave("bothParameters.png", p, "./Visualizations/", device = "png")
