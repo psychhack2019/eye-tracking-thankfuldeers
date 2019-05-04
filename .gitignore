@@ -1,0 +1,5 @@
+# Pycharm generated files
+.idea/
+
+# dataset file
+pupil_data.csv
