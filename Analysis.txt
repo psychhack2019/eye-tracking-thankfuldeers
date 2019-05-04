@@ -1,0 +1,5 @@
+A within subjects (n = 44), one-way multiple analysis of variance was conducted to explore the impact previous presentations has on the number of fixations and the mean pupil size.
+There was a statistically significant difference in mean pupil size based on the number of image occurrences, F (1, 43) = 9.293, p < .01.
+This difference is primarily driven through the difference between pupil size at first presentation.
+
+There was no statistically significant difference in fixation number based on the number of image occurrences, F(1, 43) = 0.9446, p = 0.331.
