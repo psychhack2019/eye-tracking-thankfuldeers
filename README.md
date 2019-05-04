@@ -1,4 +1,18 @@
-# PsychHacks2019
+# DeersEyeTrack
+Psychhack2019 project on Eyetracking Dataset, by Team ThankfulDeers.
+
+## Development Setup
+This project is written in 3.7 environment. Please make sure [Python3](https://www.python.org/downloads/) is installed properly.
+
+1. Install the required dependencies
+```
+$ pip install -r requirements.txt
+```
+2. Run code
+```
+$ python app.py
+```
+
 ## Dataset available for UofT PsychHacks2019
 
 pupil_data.csv.zip: Contains sample report extracted from Eyelink (R) 1000 at frequency of 20Hz for 48 participants.
