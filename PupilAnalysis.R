@@ -5,8 +5,8 @@ library(tidyverse)
 library(mixtools)
 library(flexmix)
 
-setwd("C:/Users/lkdoy/Scripts/GitHub/MA/eye-tracking-thankfuldeers/")
-datapath = "./cleanedEyeDat.csv"
+setwd(".")
+datapath = "./data/cleanedEyeDat.csv"
 #read datafile
 df <- read_csv(datapath)
 
@@ -77,6 +77,7 @@ pupil.plot
 #  geom_bar() 
   
 #pupil.plot.mean 
+
 
 #GRAPHING THE FIXATION DATA
 pd <- position_dodge2(0.25)
