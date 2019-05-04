@@ -1,12 +1,8 @@
-library(car) 
-library(ggplot2)
-library(lattice)
 library(tidyverse)
-library(mixtools)
-library(flexmix)
+
 
 setwd(".")
-datapath = "./data/cleanedEyeDat.csv"
+datapath = "../data/cleanedEyeDat.csv"
 #read datafile
 df <- read_csv(datapath)
 
@@ -55,7 +51,7 @@ summary.aov(bothManova)
 
 
 #GRAPHING THE PUPIL DATA
-
+png("../static/img/PupilViolin.png")
 pd <- position_dodge2(0.25)
 pupil.plot <- ggplot(data= graphing.pupil, aes(x=factor(Occurence_num), y= mean_pupil_size, legend=F)) + 
   geom_violin() + 
@@ -65,6 +61,9 @@ pupil.plot <- ggplot(data= graphing.pupil, aes(x=factor(Occurence_num), y= mean_
   labs(colour = "Slope") #+ theme(legend.position="None")
 
 pupil.plot
+
+dev.off() 
+
 
 
 #graphing.pupil.mean <- graphing.pupil %>% group_by(Occurence_num) %>% summarise(mean_pupil_size = mean(mean_pupil_size))
@@ -80,6 +79,8 @@ pupil.plot
 
 
 #GRAPHING THE FIXATION DATA
+png("../static/img/fixationViolin.png")
+
 pd <- position_dodge2(0.25)
 fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y=mean_fixation_num)) +
                 geom_violin() + 
@@ -89,10 +90,14 @@ fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y
                                                        
 fixation.plot
 
+dev.off() 
 
+sd_fixation_num <- sd(mean_fixation_num)
+
+sd_fixation_num
 
 #DOUBLE AXIS
-
+png("../static/img/BothVars.png")
 p <- ggplot(graphing.both, aes(x = factor(Occurence_num), group = 1)) 
 
 p <- p + geom_line(aes(y = mean_pupil_size, colour = "Pupil Diameter"), size = 2)
@@ -119,5 +124,5 @@ p <- p + labs(y = "Mean Pupil Size",
 p <- p + theme(legend.position = c(0.8, 0.9)) + theme(panel.grid = element_blank()) 
 
 p 
+dev.off() 
 
-ggsave("bothParameters.png", p, "./Visualizations/", device = "png")

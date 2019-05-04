@@ -3,3 +3,12 @@
 
 # dataset file
 pupil_data.csv
+cleanedEyeDat.csv
+
+# node.js generated files
+*-lock.json
+node_modules/
+
+# R generated files
+.Rhistory
+.RData

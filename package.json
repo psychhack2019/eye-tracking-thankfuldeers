@@ -1,0 +1,22 @@
+{
+  "name": "eye-tracking-thankfuldeers",
+  "version": "0.0.1",
+  "description": "Psychhack2019 project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psychhack2019/eye-tracking-thankfuldeers.git"
+  },
+  "author": "Jerry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/psychhack2019/eye-tracking-thankfuldeers/issues"
+  },
+  "homepage": "https://github.com/psychhack2019/eye-tracking-thankfuldeers#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}

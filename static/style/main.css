@@ -1,0 +1,88 @@
+html {overflow: -moz-scrollbars-vertical;}
+
+body {
+	background: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #3C3D3F;
+    text-align: left;
+    max-width: 800px;
+    margin: auto;
+}
+
+header{
+    display:grid;
+    margin-top:36px;
+    height: 64px;
+    grid-template-rows: auto auto;
+    grid-row-gap: 15px;
+    text-align: center;
+}
+
+header #title{
+    color: black;
+    text-decoration:none;
+    margin: 0px;
+    width:100%;
+    font-size:48px;
+}
+
+#error_box {
+    color: red;
+    visibility:hidden;
+}
+
+#error_box::before { 
+  content: "Error: ";
+}
+
+#results {
+    display: none;
+    margin: 5% 0;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
+    grid-row-gap: 5%;
+}
+
+#results img {
+    display: none;
+    /*max-height: 30%;*/
+    margin: 0 auto;
+}
+
+#analysis {
+    margin: 0 auto;
+    font-size: 1.5em;
+    border-radius: 5px;
+    color: #000000;
+    background: #ffffff;
+    border: 2px #3C3D3F solid;
+}
+
+#analysis:hover {
+    background-color: #6177F4;
+    color: #ffffff;
+}
+
+#analysis:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+#inprogress {
+    display: none;
+    margin-top: 2%;
+    text-align: center;
+}
+
+#explain {
+    display: none;
+    margin: 2% auto;
+    font-size: 1.2em;
+}
+
+.formula {
+    font-size: 1.3em;
+    text-align: center;
+}
