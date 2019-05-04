@@ -75,3 +75,14 @@ header #title{
     margin-top: 2%;
     text-align: center;
 }
+
+#explain {
+    display: none;
+    margin: 2% auto;
+    font-size: 1.2em;
+}
+
+.formula {
+    font-size: 1.3em;
+    text-align: center;
+}
