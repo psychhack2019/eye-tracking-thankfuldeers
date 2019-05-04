@@ -11,10 +11,12 @@ body {
 }
 
 header{
-    display:flex;
+    display:grid;
     margin-top:36px;
     height: 64px;
-    justify-content:flex-end;
+    grid-template-rows: auto auto;
+    grid-row-gap: 15px;
+    text-align: center;
 }
 
 header #title{
@@ -23,13 +25,6 @@ header #title{
     margin: 0px;
     width:100%;
     font-size:48px;
-}
-
-.header_btn{
-    text-decoration:none;
-    font-size: 16px;
-    margin-left:5px;
-    margin-right:5px;
 }
 
 #error_box {
@@ -41,6 +36,41 @@ header #title{
   content: "Error: ";
 }
 
-#result {
+#results {
     display: none;
+    margin: 5% 0;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
+    grid-row-gap: 5%;
+}
+
+#results img {
+    max-height: 30%;
+    margin: 0 auto;
+}
+
+#analysis {
+    margin: 0 auto;
+    font-size: 1.5em;
+    border-radius: 5px;
+    color: #000000;
+    background: #ffffff;
+    border: 2px #3C3D3F solid;
+}
+
+#analysis:hover {
+    background-color: #6177F4;
+    color: #ffffff;
+}
+
+#analysis:disabled {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+#inprogress {
+    display: none;
+    margin-top: 2%;
+    text-align: center;
 }

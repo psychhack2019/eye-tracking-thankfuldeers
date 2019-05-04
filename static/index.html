@@ -8,27 +8,19 @@
 <body>
     <header>
         <a href="/" id="title">DeersEyeTrack</a>
-        <!--<a href="/login.html" id="signin_button" class="btn header_btn hidden">Sign in or Sign up</a>
-        <a href="/signout/" id="signout_button" class="btn header_btn hidden">Sign out</a>-->
+        <button id="analysis">Start Analysis</button>
     </header>
 
-    <button id="analysis">Analysis</button>
-
-    <img id="result" src="#"/>
-    
     <p id="error_box"></p>
-    
-    <!--<form class="complex_form hidden" id="create_message_form">
-      <textarea rows="5" id="post_content" class="form_element" placeholder="Enter your message" required></textarea>
-      <button type="submit" class="btn">Post your message</button>
-    </form>
-        
-    <div id="messages">
+
+    <p id="inprogress">Working on analysis...Please wait...</p>
+
+    <div id="results">
+        <img id="result1" src="#" alt="result1"/>
+        <img id="result2" src="#" alt="result2"/>
+        <img id="result3" src="#" alt="result2"/>
     </div>
-    
-    <footer>
-        <a href='/credits.html'>credits</a>
-    </footer>-->
+
     <script src="js/api.js"></script>
     <script src="js/index.js"></script>
 </body>

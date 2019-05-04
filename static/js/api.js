@@ -29,19 +29,19 @@ let api = (function(){
         errorListeners.push(listener);
     };
 
-    module.getAnalysis = () => {
+    module.getAnalysis = (id) => {
         send("GET", "/analysis", null, function(err, res){
              if (err) return notifyErrorListeners(err);
-             notifyResultListeners(res.url);
+             notifyResultListeners(id, res.url);
         });
     }
     
     let resultListeners = [];
     
-    function notifyResultListeners(url){
-        console.log(url);
+    function notifyResultListeners(id, url){
+        // console.log(url);
         resultListeners.forEach(function(listener){
-            listener(url);
+            listener(id, url);
         });
     };
     
