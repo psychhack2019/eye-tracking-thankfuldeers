@@ -6,7 +6,7 @@ library(mixtools)
 library(flexmix)
 
 setwd(".")
-datapath = "./data/cleanedEyeDat.csv"
+datapath = "../data/cleanedEyeDat.csv"
 #read datafile
 df <- read_csv(datapath)
 
@@ -66,6 +66,8 @@ pupil.plot <- ggplot(data= graphing.pupil, aes(x=factor(Occurence_num), y= mean_
 
 pupil.plot
 
+ggsave("ViolinPupilSizeByOccurence.png", pupil.plot, "../static/img/", device = "png")
+
 
 #graphing.pupil.mean <- graphing.pupil %>% group_by(Occurence_num) %>% summarise(mean_pupil_size = mean(mean_pupil_size))
 #graphing.pupil.sd <- graphing.pupil %>% group_by(Occurence_num) %>% summarise(sd = sd(mean_pupil_size))
@@ -89,7 +91,7 @@ fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y
                                                        
 fixation.plot
 
-
+ggsave("ViolinFixationsByOccurence.png", fixation.plot, "../static/img/", device = "png")
 
 #DOUBLE AXIS
 
@@ -120,4 +122,4 @@ p <- p + theme(legend.position = c(0.8, 0.9)) + theme(panel.grid = element_blank
 
 p 
 
-ggsave("bothParameters.png", p, "./Visualizations/", device = "png")
+ggsave("bothParameters.png", p, "../static/img/", device = "png")

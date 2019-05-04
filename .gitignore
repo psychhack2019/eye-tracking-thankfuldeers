@@ -3,6 +3,7 @@
 
 # dataset file
 pupil_data.csv
+cleanedEyeDat.csv
 
 # node.js generated files
 *-lock.json

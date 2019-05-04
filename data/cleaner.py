@@ -2,8 +2,15 @@
 import pandas
 import numpy as py
 
+import sys
+
+
 # -----Global variables-----
 FILE_NAME = 'pupil_data.csv.zip'
+
+if len(sys.argv) >= 2:
+    FILE_NAME = sys.argv[1]
+
 
 # -----Code-----
 def cleanData(data):
