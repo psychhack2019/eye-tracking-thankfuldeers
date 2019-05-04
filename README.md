@@ -2,11 +2,16 @@
 Psychhack2019 project on Eyetracking Dataset, by Team ThankfulDeers.
 
 ## Development Setup
-This project is written in 3.7 environment. Please make sure [Python3](https://www.python.org/downloads/) is installed properly.
+This project is written in Node.js and Python3.7 environment. Please make sure [Node.js](https://nodejs.org/en/download/) and [Python3](https://www.python.org/downloads/) is installed properly.
+
+After checking out the repository, developers can follow the instructions below to make sure all dependencies installed.
 
 1. Install the required dependencies.
 ```
+$ cd eye-tracking-thankfuldeers
 $ pip install -r requirements.txt
+$ npm install
+
 ```
 2. Unzip the sample dataset "pupil_data.csv.zip". Please make sure the result file pupil_data.csv is in the same directory as app.py.
 
