@@ -22,10 +22,8 @@ df.fixation <- df %>% ungroup() %>%
 testdf.pupil <- df.pupil %>% group_by(recording_session_label, trial_index, study_image) %>% summarise(mean_pupil_size = mean(right_pupil_size)) %>% 
   group_by(recording_session_label) %>% mutate(Occurence_num = ave(study_image==study_image, study_image, FUN=cumsum)) %>% na.omit()
 
-
 testdf.fixation <- df.fixation %>% group_by(recording_session_label, trial_index, study_image) %>% summarise(mean_pupil_size = mean(right_pupil_size), fixation_num = max(right_fix_index)) %>% 
   group_by(recording_session_label) %>% mutate(Occurence_num = ave(study_image==study_image, study_image, FUN=cumsum)) %>% na.omit()
-
 
 
 graphing.pupil <- testdf.pupil %>% group_by(Occurence_num, recording_session_label) %>% summarise(mean_pupil_size = mean(mean_pupil_size)) %>% group_by(recording_session_label) %>%
@@ -34,7 +32,7 @@ graphing.pupil <- testdf.pupil %>% group_by(Occurence_num, recording_session_lab
 
 graphing.fixation <- testdf.fixation %>% group_by(Occurence_num, recording_session_label) %>% summarise(mean_fixation_num = mean(fixation_num)) %>% group_by(recording_session_label) %>%
   mutate(slopeCheck = case_when(
-                              mean_fixation_num > lead(mean_fixation_num, 1) ~ "reduction", TRUE ~ "increase")) 
+    mean_fixation_num > lead(mean_fixation_num, 1) ~ "reduction", TRUE ~ "increase")) 
 
 
 graphing.both <- testdf.fixation %>% group_by(Occurence_num) %>% summarise(mean_fixation_num = mean(fixation_num), mean_pupil_size = mean(mean_pupil_size), sd_pupil_size = sd(mean_pupil_size))
@@ -45,8 +43,7 @@ pupilAov1 <- aov(mean_pupil_size ~ as.factor(Occurence_num), data=testdf.pupil)
 summary(pupilAov1)
 model.tables(pupilAov1, "means")
 
-
-bothAov1 <- aov(Occurence_num ~ mean_pupil_size * fixation_num, data=testdf.fixation)
+bothAov1 <- aov(Occurence_num ~ mean_pupil_size * fixation_num, data=graphing.fixation)
 summary(bothAov1)
 
 model.tables(bothAov1)
