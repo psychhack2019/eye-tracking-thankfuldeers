@@ -6,7 +6,7 @@ library(mixtools)
 library(flexmix)
 
 setwd(".")
-datapath = "./data/cleanedEyeDat.csv"
+datapath = "../data/cleanedEyeDat.csv"
 #read datafile
 df <- read_csv(datapath)
 
@@ -55,7 +55,7 @@ summary.aov(bothManova)
 
 
 #GRAPHING THE PUPIL DATA
-png("./static/img/PupilViolin.png")
+png("../static/img/PupilViolin.png")
 pd <- position_dodge2(0.25)
 pupil.plot <- ggplot(data= graphing.pupil, aes(x=factor(Occurence_num), y= mean_pupil_size, legend=F)) + 
   geom_violin() + 
@@ -83,7 +83,7 @@ dev.off()
 
 
 #GRAPHING THE FIXATION DATA
-png("./static/img/fixationViolin.png")
+png("../static/img/fixationViolin.png")
 pd <- position_dodge2(0.25)
 fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y=mean_fixation_num)) +
                 geom_violin() + 
@@ -96,7 +96,7 @@ dev.off()
 
 
 #DOUBLE AXIS
-png("BothVars.png")
+png("../static/img/BothVars.png")
 p <- ggplot(graphing.both, aes(x = factor(Occurence_num), group = 1)) 
 
 p <- p + geom_line(aes(y = mean_pupil_size, colour = "Pupil Diameter"), size = 2)
