@@ -1,9 +1,5 @@
-library(car) 
-library(ggplot2)
-library(lattice)
 library(tidyverse)
-library(mixtools)
-library(flexmix)
+
 
 setwd(".")
 datapath = "../data/cleanedEyeDat.csv"

@@ -12,8 +12,8 @@ app.use(express.static('static'));
 const spawn = require('child_process').spawn;
 const results = {
 	result1: 'img/BothParameters.png',
-	result2: 'img/ViolinFixationsByOccurence.png', 
-	result3: 'img/ViolinPupilSizeByOccurence.png'
+	result2: 'img/fixationViolin.png', 
+	result3: 'img/PupilViolin.png'
 }
 
 app.get('/analysis/', (req, res, next) => {
