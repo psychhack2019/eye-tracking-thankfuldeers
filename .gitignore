@@ -3,3 +3,7 @@
 
 # dataset file
 pupil_data.csv
+
+# node.js files
+*-lock.json
+node_modules/
