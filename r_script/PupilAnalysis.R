@@ -6,7 +6,7 @@ library(mixtools)
 library(flexmix)
 
 setwd(".")
-datapath = "../data/cleanedEyeDat.csv"
+datapath = "./data/cleanedEyeDat.csv"
 #read datafile
 df <- read_csv(datapath)
 
@@ -55,7 +55,7 @@ summary.aov(bothManova)
 
 
 #GRAPHING THE PUPIL DATA
-
+png("./static/img/PupilViolin.png")
 pd <- position_dodge2(0.25)
 pupil.plot <- ggplot(data= graphing.pupil, aes(x=factor(Occurence_num), y= mean_pupil_size, legend=F)) + 
   geom_violin() + 
@@ -66,7 +66,8 @@ pupil.plot <- ggplot(data= graphing.pupil, aes(x=factor(Occurence_num), y= mean_
 
 pupil.plot
 
-ggsave("ViolinPupilSizeByOccurence.png", pupil.plot, "../static/img/", device = "png")
+dev.off() 
+
 
 
 #graphing.pupil.mean <- graphing.pupil %>% group_by(Occurence_num) %>% summarise(mean_pupil_size = mean(mean_pupil_size))
@@ -82,6 +83,7 @@ ggsave("ViolinPupilSizeByOccurence.png", pupil.plot, "../static/img/", device = 
 
 
 #GRAPHING THE FIXATION DATA
+png("./static/img/fixationViolin.png")
 pd <- position_dodge2(0.25)
 fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y=mean_fixation_num)) +
                 geom_violin() + 
@@ -90,11 +92,11 @@ fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y
   xlab('Occurence Number') + ylab('number of fixations') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
                                                        
 fixation.plot
+dev.off()
 
-ggsave("ViolinFixationsByOccurence.png", fixation.plot, "../static/img/", device = "png")
 
 #DOUBLE AXIS
-
+png("BothVars.png")
 p <- ggplot(graphing.both, aes(x = factor(Occurence_num), group = 1)) 
 
 p <- p + geom_line(aes(y = mean_pupil_size, colour = "Pupil Diameter"), size = 2)
@@ -121,5 +123,5 @@ p <- p + labs(y = "Mean Pupil Size",
 p <- p + theme(legend.position = c(0.8, 0.9)) + theme(panel.grid = element_blank()) 
 
 p 
+dev.off() 
 
-ggsave("bothParameters.png", p, "../static/img/", device = "png")
