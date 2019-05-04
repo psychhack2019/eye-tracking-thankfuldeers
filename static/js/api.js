@@ -30,7 +30,7 @@ let api = (function(){
     };
 
     module.getAnalysis = (id) => {
-        send("GET", "/analysis", null, function(err, res){
+        send("GET", "/analysis/" + id + '/', null, function(err, res){
              if (err) return notifyErrorListeners(err);
              notifyResultListeners(id, res.url);
         });

@@ -36,6 +36,8 @@
             document.getElementById("inprogress").style.display="block";
             document.getElementById('results').style.display = "none";
             api.getAnalysis('result1');
+            api.getAnalysis('result2');
+            api.getAnalysis('result3');
         });
     });
 }())

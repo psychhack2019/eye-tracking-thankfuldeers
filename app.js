@@ -10,14 +10,24 @@ app.use(bodyParser.json());
 app.use(express.static('static'));
 
 const spawn = require('child_process').spawn;
+const results = {
+	result1: 'img/BothParameters.png',
+	result2: 'img/ViolinFixationsByOccurence.png', 
+	result3: 'img/ViolinPupilSizeByOccurence.png'
+}
 
-app.get('/analysis', (req, res, next) => {
+app.get('/analysis/', (req, res, next) => {
 	// using spawn instead of exec, prefer a stream over a buffer
   	// to avoid maxBuffer issue
   	let process = spawn('python', ['./plotsample.py']);
   	process.stdout.on('data', function (data) {
   		res.send({url: data.toString()});
   	});
+});
+
+app.get('/analysis/:id/', (req, res, next) => {
+  	let id = req.params.id;
+  	res.send({url: results[id]});
 });
 
 /*app.use(function (req, res, next){
