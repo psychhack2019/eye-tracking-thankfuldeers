@@ -5,25 +5,54 @@ Psychhack2019 project on Eyetracking Dataset, by Team ThankfulDeers.
 This project is written in Node.js, R and Python3.7 environment. Please make sure [Node.js](https://nodejs.org/en/download/), [R](https://cran.r-project.org/mirrors.html) and [Python3](https://www.python.org/downloads/) is installed properly.
 
 ## Usage
+User can follow the following steps to analyse the eye tracking data.
 ### Clean dataset
-There is a sample dataset available in data directory, dataset details are in "Dataset available for UofT PsychHacks2019" section.
+There is a sample dataset available in `data` directory, dataset details are in `Dataset available for UofT PsychHacks2019` section.
 
-User can also use there own dataset as long as it follows the same format as the sample dataset and is in the data directory.
+User can also use there own dataset as long as it follows the same format as the sample dataset and is in the `data` directory.
 
 User can follow the following instructions to clean a dataset:
 
-1. Install the required dependencies.
+1. Make sure [Python3](https://www.python.org/downloads/) is installed properly.
+
+2. Install the required dependencies.
 ```
 $ cd eye-tracking-thankfuldeers/data
 $ pip install -r requirements.txt
 ```
 
-2. Run code. Can replace pupil_data.csv.zip with your own dataset name. If user doesn't provide the name of dataset, the code will default run on sample dataset.
+3. Run code. Can replace pupil_data.csv.zip with your own dataset name. If user doesn't provide the name of dataset, the code will defaultly run on sample dataset.
 ```
 $ python cleaner.py pupil_data.csv.zip
 ```
 
-3. Once cleaner finishes successfully, there should be a file named "cleanedEyeDat.csv" created in data directory, which will be used in the following analysis. 
+4. Once cleaner finishes successfully, there should be a file named "cleanedEyeDat.csv" created in `data` directory, which will be used in the following analysis. 
+
+### Analysis Data
+Now user can use the R script provided in `script` directory to analyse the cleaned data (generated in previous section, data/cleanedEyeDat.csv). User should make sure [R](https://cran.r-project.org/mirrors.html) is installed properly.
+
+Once the script completed, 3 plots will be generated in `static/img` directory.
+
+### Display result (Sample dataset only)
+There is a simple web application written for display all the results for sample dataset. User can run it using the following instructions:
+
+1. Make sure [Node.js](https://nodejs.org/en/download/) is installed properly.
+
+2. Install the required dependencies.
+```
+$ cd eye-tracking-thankfuldeers
+$ npm install
+```
+
+3. Run the web application locally.
+```
+$ node app.js
+```
+
+4. Now user can access the web application via
+```
+http://[ip address of user computer]:3000
+```
 
 ## Dataset available for UofT PsychHacks2019
 
