@@ -23,6 +23,7 @@
 
     api.onResultUpdate(function(id, url){
         document.getElementById(id).src=url;
+        document.getElementById(id).style.display="block";
         document.getElementById('results').style.display = "grid";
         getOneResult();
     });
@@ -33,6 +34,7 @@
             cnt = 0;
             document.getElementById("analysis").disabled = true;
             document.getElementById("inprogress").style.display="block";
+            document.getElementById('results').style.display = "none";
             api.getAnalysis('result1');
         });
     });
