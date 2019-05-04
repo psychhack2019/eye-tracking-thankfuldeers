@@ -2,29 +2,34 @@
 Psychhack2019 project on Eyetracking Dataset, by Team ThankfulDeers.
 
 ## Development Setup
-This project is written in Node.js and Python3.7 environment. Please make sure [Node.js](https://nodejs.org/en/download/) and [Python3](https://www.python.org/downloads/) is installed properly.
+This project is written in Node.js, R and Python3.7 environment. Please make sure [Node.js](https://nodejs.org/en/download/), [R](https://cran.r-project.org/mirrors.html) and [Python3](https://www.python.org/downloads/) is installed properly.
 
-After checking out the repository, developers can follow the instructions below to make sure all dependencies installed.
+## Usage
+### Clean dataset
+There is a sample dataset available in data directory, dataset details are in "Dataset available for UofT PsychHacks2019" section.
+
+User can also use there own dataset as long as it follows the same format as the sample dataset and is in the data directory.
+
+User can follow the following instructions to clean a dataset:
 
 1. Install the required dependencies.
 ```
-$ cd eye-tracking-thankfuldeers
+$ cd eye-tracking-thankfuldeers/data
 $ pip install -r requirements.txt
-$ npm install
+```
 
+2. Run code. Can replace pupil_data.csv.zip with your own dataset name. If user doesn't provide the name of dataset, the code will default run on sample dataset.
 ```
-2. Unzip the sample dataset "pupil_data.csv.zip". Please make sure the result file pupil_data.csv is in the same directory as app.py.
+$ python cleaner.py pupil_data.csv.zip
+```
 
-3. Run code.
-```
-$ python app.py
-```
+3. Once cleaner finishes successfully, there should be a file named "cleanedEyeDat.csv" created in data directory, which will be used in the following analysis. 
 
 ## Dataset available for UofT PsychHacks2019
 
 pupil_data.csv.zip: Contains sample report extracted from Eyelink (R) 1000 at frequency of 20Hz for 48 participants.
 
-**Study design**:</br>
+### Study design
 Participants view face images for 6 blocks and perform a remember-know-new (RKN) recognition task in the last 3 blocks.
 
 Study blocks 1-2 (60 trials in each block): Exposure-I (60 face images presented twice)<br/>
@@ -33,7 +38,7 @@ Study block 6 (60 trials): Exposure-II (60 face images that were presented for t
 
 Test blocks 1-3 (40 trials in each block): Direct Test (60 face images from Exposure-II that were presented twice before and 60 new face images presented once)<br/>
 
-## Variables:<br/>
+### Variables:<br/>
 ```
 "recording_session_label": subject number
 "trial_index": trial number (1:420)
