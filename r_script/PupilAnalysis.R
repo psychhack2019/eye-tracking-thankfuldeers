@@ -79,7 +79,7 @@ dev.off()
 
 
 #GRAPHING THE FIXATION DATA
-#png("../static/img/fixationViolin.png")
+png("../static/img/fixationViolin.png")
 
 pd <- position_dodge2(0.25)
 fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y=mean_fixation_num)) +
@@ -90,7 +90,11 @@ fixation.plot <- ggplot(data = graphing.fixation, aes(x=factor(Occurence_num), y
                                                        
 fixation.plot
 
+dev.off() 
+
 sd_fixation_num <- sd(mean_fixation_num)
+
+sd_fixation_num
 
 #DOUBLE AXIS
 png("../static/img/BothVars.png")

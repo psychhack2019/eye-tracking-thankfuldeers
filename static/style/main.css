@@ -46,7 +46,7 @@ header #title{
 
 #results img {
     display: none;
-    max-height: 30%;
+    /*max-height: 30%;*/
     margin: 0 auto;
 }
 
